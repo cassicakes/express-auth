@@ -6,7 +6,12 @@ module.exports = function(sequelize, DataTypes) {
   var user = sequelize.define('user', {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
-    password: DataTypes.STRING
+    password: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [8, 99]
+        }
+      }
   }, {
     classMethods: {
       associate: function(models) {
